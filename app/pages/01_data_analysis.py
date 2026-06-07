@@ -175,9 +175,7 @@ with tab_target:
     with col_b:
         st.markdown(f"- **认购 (yes)**: {subscribe_counts.get('yes', 0):,} 人")
         st.markdown(f"- **未认购 (no)**: {subscribe_counts.get('no', 0):,} 人")
-        st.markdown(
-            f"- **认购率**: {subscribe_counts.get('yes', 0) / len(df) * 100:.2f}%"
-        )
+        st.markdown(f"- **认购率**: {subscribe_counts.get('yes', 0) / len(df) * 100:.2f}%")
 
     st.divider()
     st.markdown("### 按认购意向分组的特征对比")

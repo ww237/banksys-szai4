@@ -55,8 +55,6 @@ def get_correlation_matrix(df: pd.DataFrame) -> pd.DataFrame:
 
 def get_grouped_stats(df: pd.DataFrame, group_col: str, value_col: str) -> pd.DataFrame:
     """按 group_col 分组统计 value_col 的均值与计数."""
-    grouped = (
-        df.groupby(group_col)[value_col].agg(["mean", "count", "std"]).reset_index()
-    )
+    grouped = df.groupby(group_col)[value_col].agg(["mean", "count", "std"]).reset_index()
     grouped.columns = [group_col, "mean", "count", "std"]
     return grouped
