@@ -1,10 +1,9 @@
 """数据分析交互页 — 银行营销数据探索."""
 
 import pandas as pd
-import streamlit as st
 import plotly.express as px
+import streamlit as st
 
-from app.utils.data_loader import get_column_types, load_csv
 from app.utils.analysis import (
     get_categorical_counts,
     get_correlation_matrix,
@@ -13,6 +12,7 @@ from app.utils.analysis import (
     get_numeric_stats,
     get_summary,
 )
+from app.utils.data_loader import get_column_types, load_csv
 
 st.set_page_config(page_title="数据分析", page_icon="📊", layout="wide")
 
