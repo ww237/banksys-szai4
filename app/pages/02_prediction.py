@@ -1,6 +1,9 @@
 """在线预测页 — 点选输入客户特征,预测认购意向."""
 
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 import pandas as pd
 import streamlit as st
