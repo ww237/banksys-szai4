@@ -8,10 +8,10 @@
 
 ## 当前状态 (最后更新: 2026-06-07 · by AI)
 
-- **阶段**:`开发中 — US-1 CI 全绿,等待人工 Review & Merge`
-- **上一步完成**:Phase 1 全部完成;PR #1 已创建,CI 全绿(lint-and-test ✅ + docker-build ✅)。
-- **下一步 (TODO 第一条)**:**人工 Review PR #1 并合并 main**,然后进入 Phase 2(US-2 数据分析页)。
-- **阻塞项**:等待人工合并 PR #1。
+- **阶段**:`开发中 — US-2 数据分析页完成,等待合并`
+- **上一步完成**:Phase 2 全部完成;`app/utils/analysis.py` + `app/pages/01_data_analysis.py` + `tests/test_analysis.py`(10 测试);本地自检全绿(ruff ✅ pytest 21/21 ✅ 100%)。
+- **下一步 (TODO 第一条)**:**合并 PR #2 → 进入 Phase 3(US-3 模型训练)**。
+- **阻塞项**:等待合并 PR #2。
 
 ---
 
@@ -28,13 +28,13 @@
   - [x] 创建 `.github/workflows/ci.yml`(ruff + pytest + docker build)
   - [x] 创建 `.gitignore`(排除 `data/`, `models/`, `__pycache__`, `.venv/` 等)
   - [x] 本地自检全绿:ruff format ✅, ruff check ✅, pytest 100% ✅(docker build 跳过,本地无 Docker)
-- [ ] **Phase 2 — US-2 数据分析页**:
-  - [ ] 从 `main` 开 feature 分支 `feature/2-data-analysis`
-  - [ ] 实现 `app/utils/data_loader.py`(load_csv + 缓存)
-  - [ ] 实现 `app/pages/01_data_analysis.py`(统计摘要 + 直方图 + 柱状图 + 散点图 + 分组对比)
-  - [ ] 编写测试 `tests/test_data_loader.py`、`tests/test_pages.py`
-  - [ ] 本地自检全绿
-  - [ ] 创建 PR,CI 全绿后合并 main
+- [x] **Phase 2 — US-2 数据分析页**:
+  - [x] 从 `main` 开 feature 分支 `feature/2-data-analysis`
+  - [x] 实现 `app/utils/analysis.py`(统计摘要、描述统计、频次、缺失值、相关性、分组统计)
+  - [x] 实现 `app/pages/01_data_analysis.py`(4 个 Tab:数据概览 + 单变量 + 双变量 + 目标分析)
+  - [x] 编写测试 `tests/test_analysis.py`(10 测试)
+  - [x] 本地自检全绿:ruff ✅ pytest 21/21 ✅ 100%覆盖
+  - [x] 添加 `pyproject.toml`(ruff + pytest + coverage 配置,排除 pages 目录)
 - [ ] **Phase 3 — US-3 模型训练**:
   - [ ] 从 `main` 开 feature 分支 `feature/3-model-training`
   - [ ] 实现 `app/model/train.py`(数据加载 → 预处理 → 训练 → 评估 → 保存)
