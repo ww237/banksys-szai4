@@ -8,10 +8,10 @@
 
 ## 当前状态 (最后更新: 2026-06-07 · by AI)
 
-- **阶段**:`开发中 — US-1 工程化初始化完成`
-- **上一步完成**:Phase 1 全部子任务:依赖文件、目录骨架、Dockerfile、CI 配置、.gitignore、基础测试、本地自检全绿。
-- **下一步 (TODO 第一条)**:**提交代码、推送 feature 分支、创建 PR**(进入第⑤步)。
-- **阻塞项**:无
+- **阶段**:`开发中 — US-1 CI 全绿,等待人工 Review & Merge`
+- **上一步完成**:Phase 1 全部完成;PR #1 已创建,CI 全绿(lint-and-test ✅ + docker-build ✅)。
+- **下一步 (TODO 第一条)**:**人工 Review PR #1 并合并 main**,然后进入 Phase 2(US-2 数据分析页)。
+- **阻塞项**:等待人工合并 PR #1。
 
 ---
 
@@ -70,12 +70,14 @@
 | 2026-06-07 | 不做 CD,仅本地部署 | 用户明确要求;CI 阶段构建 Docker 但不推送 |
 | 2026-06-07 | 数据与模型不进 Git | 数据文件合计约 3.7 MB;模型文件二进制不可 diff;通过 .gitignore 排除 |
 | 2026-06-07 | 端口固定 8004 | 用户指定 |
+| 2026-06-07 | Dockerfile data/models 目录改为 VOLUME 挂载 | CI 环境无 gitignored 文件,COPY 失败;运行时通过 `-v` 挂载数据 |
 
 ---
 
 ## 已知坑 (GOTCHAS)
 
 - **GitHub HTTPS 443 被墙,git push/pull 超时**:教学楼网络 DNS/防火墙拦截 HTTPS。解决:用 SSH 443 替代(`ssh://git@ssh.github.com:443/<user>/<repo>.git`),需先 `ssh-keyscan -p 443 ssh.github.com >> ~/.ssh/known_hosts`。
+- **Dockerfile COPY data/models 在 CI 失败**:数据/模型目录被 `.gitignore` 排除,CI checkout 无这些目录,`COPY` 报错。解决:用 `RUN mkdir -p` 创建空目录 + `VOLUME` 声明;运行时通过 `-v` 挂载真实数据。
 
 ---
 
