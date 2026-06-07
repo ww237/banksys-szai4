@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project data & models (large binaries, not for Git)
+data/
+models/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# pytest / coverage
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Docker
+*.tar
