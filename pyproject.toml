@@ -5,15 +5,16 @@ target-version = "py311"
 [tool.ruff.lint]
 select = ["E", "F", "I", "N", "W", "UP"]
 # Streamlit multipage requires numeric-prefixed filenames like 01_xxx.py
-ignore = ["N999"]
+# N806: uppercase variable names (X_train/X_val) are standard ML convention
+ignore = ["N999", "N806"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-v --cov=app --cov-fail-under=80"
 
 [tool.coverage.run]
-# Streamlit page files are UI-only and cannot be tested without the Streamlit runtime
-omit = ["app/pages/*"]
+# Streamlit page files are UI-only; train.py is a CLI script
+omit = ["app/pages/*", "app/model/train.py"]
 
 [tool.coverage.report]
 fail_under = 80

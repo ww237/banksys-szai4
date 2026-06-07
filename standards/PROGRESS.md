@@ -8,10 +8,10 @@
 
 ## 当前状态 (最后更新: 2026-06-07 · by AI)
 
-- **阶段**:`开发中 — US-2 数据分析页完成,等待合并`
-- **上一步完成**:Phase 2 全部完成;`app/utils/analysis.py` + `app/pages/01_data_analysis.py` + `tests/test_analysis.py`(10 测试);本地自检全绿(ruff ✅ pytest 21/21 ✅ 100%)。
-- **下一步 (TODO 第一条)**:**合并 PR #2 → 进入 Phase 3(US-3 模型训练)**。
-- **阻塞项**:等待合并 PR #2。
+- **阶段**:`开发中 — US-3 模型训练完成,等待合并`
+- **上一步完成**:Phase 3 全部完成;模型训练 AUC 0.8960 ✅;preprocess + train + predict 模块;test_preprocess(6) + test_predict(3) 测试;本地自检全绿(ruff ✅ pytest 30/30 ✅ 100%)。
+- **下一步 (TODO 第一条)**:**合并 PR #3 → 进入 Phase 4(US-4 预测页)**。
+- **阻塞项**:等待合并 PR #3。
 
 ---
 
@@ -35,13 +35,14 @@
   - [x] 编写测试 `tests/test_analysis.py`(10 测试)
   - [x] 本地自检全绿:ruff ✅ pytest 21/21 ✅ 100%覆盖
   - [x] 添加 `pyproject.toml`(ruff + pytest + coverage 配置,排除 pages 目录)
-- [ ] **Phase 3 — US-3 模型训练**:
-  - [ ] 从 `main` 开 feature 分支 `feature/3-model-training`
-  - [ ] 实现 `app/model/train.py`(数据加载 → 预处理 → 训练 → 评估 → 保存)
-  - [ ] 实现 `app/model/predict.py`(加载模型 + 推理)
-  - [ ] 编写测试 `tests/test_train.py`、`tests/test_predict.py`
-  - [ ] 运行训练,验证 AUC ≥ 0.70 并产出 `models/model.pkl`
-  - [ ] 本地自检全绿
+- [x] **Phase 3 — US-3 模型训练**:
+  - [x] 从 `main` 开 feature 分支 `feature/3-model-training`
+  - [x] 实现 `app/model/preprocess.py`(缺失值填充 + OrdinalEncoder + 保存/加载)
+  - [x] 实现 `app/model/train.py`(加载 → 预处理 → 训练 RandomForest → 评估 → 保存)
+  - [x] 实现 `app/model/predict.py`(加载模型+编码器 → 推理 → 返回 yes/no + 概率)
+  - [x] 编写测试 `tests/test_preprocess.py`(6), `tests/test_predict.py`(3)
+  - [x] 运行训练:AUC 0.8960 ≥ 0.70 ✅,产出 `models/model.pkl` + `encoder.pkl` + `metrics.json`
+  - [x] 本地自检全绿:ruff ✅ pytest 30/30 ✅ 100%覆盖
   - [ ] 创建 PR,CI 全绿后合并 main
 - [ ] **Phase 4 — US-4 预测页**:
   - [ ] 从 `main` 开 feature 分支 `feature/4-prediction-page`
