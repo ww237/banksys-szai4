@@ -10,7 +10,7 @@
 
 - **阶段**:`已完成 — 全部 5 个 Phase 开发完毕,应用运行中`
 - **上一步完成**:Phase 5 全部完成;README.md 已编写;应用已启动在 http://localhost:8004;健康检查 ✅。
-- **下一步 (TODO 第一条)**:**等待用户验证功能,确认无误后合并 PR #5 完成交付**。
+- **下一步**:用户验证后即可正常使用。
 - **阻塞项**:无
 
 ---
@@ -43,21 +43,21 @@
   - [x] 编写测试 `tests/test_preprocess.py`(6), `tests/test_predict.py`(3)
   - [x] 运行训练:AUC 0.8960 ≥ 0.70 ✅,产出 `models/model.pkl` + `encoder.pkl` + `metrics.json`
   - [x] 本地自检全绿:ruff ✅ pytest 30/30 ✅ 100%覆盖
-  - [ ] 创建 PR,CI 全绿后合并 main
+  - [x] 创建 PR,CI 全绿后合并 main
 - [x] **Phase 4 — US-4 预测页**:
   - [x] 从 `main` 开 feature 分支 `feature/4-prediction-page`
   - [x] 实现 `app/pages/02_prediction.py`(20 个特征表单:下拉+滑块+数字输入,预测结果 yes/no+概率)
   - [x] 处理模型缺失的友好提示(显示训练命令)
   - [x] 分类选项从训练数据动态提取,无需硬编码
   - [x] 本地自检全绿:ruff ✅ pytest 30/30 ✅ 100%覆盖
-  - [ ] 创建 PR,CI 全绿后合并 main
+  - [x] 创建 PR,CI 全绿后合并 main
 - [x] **Phase 5 — US-5 本地启动与最终验证**:
   - [x] 从 `main` 开 feature 分支 `feature/5-deploy-verify`
   - [x] 编写 `README.md`(项目说明 + 启动步骤 + Docker + 项目结构)
   - [x] 验证 `streamlit run --server.port 8004` 启动成功
   - [x] 健康检查 `/health` 返回 ok ✅
   - [x] 本地自检全绿:ruff ✅ pytest 30/30 ✅ 100%覆盖
-  - [ ] 创建 PR,CI 全绿后合并 main
+  - [x] 创建 PR,CI 全绿后合并 main
   - [ ] **最终**:启动应用,将 URL (`http://localhost:8004`) 发给用户验证
 
 ---
