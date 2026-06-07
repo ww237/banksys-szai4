@@ -1,5 +1,11 @@
 """banksys-szai4 — 银行营销预测系统主入口."""
 
+import sys
+from pathlib import Path
+
+# 确保项目根目录在 Python 路径中(Streamlit 页面独立运行时需要)
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 import streamlit as st
 
 st.set_page_config(
