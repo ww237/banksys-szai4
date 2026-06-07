@@ -35,13 +35,13 @@ def get_feature_options():
     df = load_csv("train.csv").drop(columns=["id", "subscribe"])
     options = {}
     for col in df.columns:
-        if df[col].dtype == "object" or str(df[col].dtype) == "string":
-            options[col] = sorted(df[col].dropna().unique().tolist())
-        else:
+        if pd.api.types.is_numeric_dtype(df[col]):
             options[col] = {
                 "min": float(df[col].min()),
                 "max": float(df[col].max()),
             }
+        else:
+            options[col] = sorted(df[col].dropna().unique().tolist())
     return options
 
 
