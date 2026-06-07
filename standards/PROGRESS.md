@@ -8,10 +8,10 @@
 
 ## 当前状态 (最后更新: 2026-06-07 · by AI)
 
-- **阶段**:`开发中 — US-3 模型训练完成,等待合并`
-- **上一步完成**:Phase 3 全部完成;模型训练 AUC 0.8960 ✅;preprocess + train + predict 模块;test_preprocess(6) + test_predict(3) 测试;本地自检全绿(ruff ✅ pytest 30/30 ✅ 100%)。
-- **下一步 (TODO 第一条)**:**合并 PR #3 → 进入 Phase 4(US-4 预测页)**。
-- **阻塞项**:等待合并 PR #3。
+- **阶段**:`开发中 — US-4 预测页完成,等待合并`
+- **上一步完成**:Phase 4 全部完成;`app/pages/02_prediction.py`(20 个特征表单 + 预测结果展示);本地自检全绿(ruff ✅ pytest 30/30 ✅ 100%)。
+- **下一步 (TODO 第一条)**:**合并 PR #4 → 进入 Phase 5(US-5 本地部署验证)**。
+- **阻塞项**:等待合并 PR #4。
 
 ---
 
@@ -44,12 +44,12 @@
   - [x] 运行训练:AUC 0.8960 ≥ 0.70 ✅,产出 `models/model.pkl` + `encoder.pkl` + `metrics.json`
   - [x] 本地自检全绿:ruff ✅ pytest 30/30 ✅ 100%覆盖
   - [ ] 创建 PR,CI 全绿后合并 main
-- [ ] **Phase 4 — US-4 预测页**:
-  - [ ] 从 `main` 开 feature 分支 `feature/4-prediction-page`
-  - [ ] 实现 `app/pages/02_prediction.py`(表单 + 预测展示)
-  - [ ] 处理模型缺失的友好提示
-  - [ ] 编写测试
-  - [ ] 本地自检全绿
+- [x] **Phase 4 — US-4 预测页**:
+  - [x] 从 `main` 开 feature 分支 `feature/4-prediction-page`
+  - [x] 实现 `app/pages/02_prediction.py`(20 个特征表单:下拉+滑块+数字输入,预测结果 yes/no+概率)
+  - [x] 处理模型缺失的友好提示(显示训练命令)
+  - [x] 分类选项从训练数据动态提取,无需硬编码
+  - [x] 本地自检全绿:ruff ✅ pytest 30/30 ✅ 100%覆盖
   - [ ] 创建 PR,CI 全绿后合并 main
 - [ ] **Phase 5 — US-5 本地启动与最终验证**:
   - [ ] 从 `main` 开 feature 分支 `feature/5-deploy-verify`
