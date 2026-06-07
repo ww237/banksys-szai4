@@ -12,11 +12,9 @@ RUN pip install --no-cache-dir --timeout 120 -i "${PIP_INDEX_URL}" -r requiremen
 COPY app/ ./app/
 COPY .streamlit/ ./.streamlit/
 
-# Copy data (for local deployment; excluded from Git)
-COPY data/ ./data/
-
-# Copy pre-trained model if exists
-COPY models/ ./models/ 2>/dev/null || true
+# Create data and models directories (populated at runtime via volume mount)
+RUN mkdir -p /app/data /app/models
+VOLUME ["/app/data", "/app/models"]
 
 EXPOSE 8004
 
